@@ -13,18 +13,18 @@ spec:
         component: {{ .Values.postgres.name }}
     spec:
       volumes:
-        - name: {{ .Values.postgres.volumn.name }}
+        - name: {{ .Values.postgres.volume.name }}
           persistentVolumeClaim:
-            claimName: {{ .Values.postgres.volumn.pvc.name }}
+            claimName: {{ .Values.postgres.volume.pvc.name }}
       containers:
         - name: {{ .Values.postgres.name }}
           image: {{ .Values.postgres.container.image }}
           ports:
             - containerPort: {{ .Values.postgres.container.port }}
           volumeMounts:
-            - name: {{ .Values.postgres.volumn.name }}
-              mountPath: {{ .Values.postgres.volumn.mountPath }}
-              subPath: {{ .Values.postgres.volumn.subPath }}
-              envFrom:
-                - configMapRef:
-                    name: {{ .Values.postgres.config.name }}
+            - name: {{ .Values.postgres.volume.name }}
+              mountPath: {{ .Values.postgres.volume.mountPath }}
+              subPath: {{ .Values.postgres.volume.subPath }}
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.postgres.config.name }}
