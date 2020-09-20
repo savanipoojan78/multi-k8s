@@ -1,0 +1,7 @@
+worker:
+  config:
+    data:
+      - key: REDIS_HOST
+        value: redis-service
+      - key: REDIS_PORT
+        value: "5432"

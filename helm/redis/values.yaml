@@ -1,0 +1,9 @@
+redis:
+  name: redis-service
+  replicaCount: 1
+  container:
+    name: redis
+    image: redis
+    port: 6379
+  service:
+    type: ClusterIP

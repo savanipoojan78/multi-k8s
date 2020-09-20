@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ Values.app.name }}
+  name: {{ .Values.worker.name }}
 spec:
-  replicas: {{ Values.app.replicaCount }}
+  replicas: {{ .Values.worker.replicaCount }}
   selector:
     matchLabels:
-      component: {{ Values.app.name}}
+      component: {{ .Values.worker.name}}
   template:
     metadata:
       labels:
-        component: {{ Values.app.name}}
+        component: {{ .Values.worker.name}}
     spec:
       containers:
-        - name: {{ Values.app.name}}
-          image: {{ Values.app.container.image }}
-        envFrom:
-          - configMapRef:
-              name: db-config
+        - name: {{ .Values.worker.name}}
+          image: {{ .Values.worker.container.image }}
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.worker.config.name }}

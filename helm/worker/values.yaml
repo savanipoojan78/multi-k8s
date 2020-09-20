@@ -1,4 +1,9 @@
-app:
+worker:
   name: worker-deployment
+  replicaCount: 1
   container:
     image: stephengrider/multi-worker
+  config:
+    data:
+      - key: name
+        value: val

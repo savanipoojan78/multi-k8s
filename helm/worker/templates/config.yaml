@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.worker.config.name }}
+data: 
+{{- range .Values.worker.config.data }}
+  {{ .key }}: {{ .value }}
+{{- end}}
