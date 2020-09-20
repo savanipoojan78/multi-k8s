@@ -1,0 +1,4 @@
+app:
+  name: worker-deployment
+  container:
+    image: stephengrider/multi-worker
